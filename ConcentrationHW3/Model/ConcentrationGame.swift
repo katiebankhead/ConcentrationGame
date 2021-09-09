@@ -23,8 +23,23 @@ struct ConcentrationGame<CardContent> {
         }
     }
     
-    func choose(card: Card) {
+    mutating func choose(_ card: Card) {
         print("You chose \(card)")
+        // find the corresponding card in the actual cards array
+        // flip card
+        if let cardIndex = index(of: card) {
+            cards[cardIndex].isFaceUp.toggle()
+        }
+    }
+    
+    func index(of targetCard: Card) -> Int? {
+        for index in 0..<cards.count {
+            if cards[index].id == targetCard.id {
+                return index
+            }
+        }
+        
+        return nil
     }
     
     struct Card: Identifiable {
