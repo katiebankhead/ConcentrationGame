@@ -12,10 +12,12 @@ import SwiftUI
 class EmojiConcentrationGame {
     private var game = createGame()
     
-    static let emojis = ["🥖", "🧋", "🍓"]
+    static let emojis = ["🥖", "🧋", "🍓", "🍬", "🫐"]
+    
+    static let pairCount = Int.random(in: 2...5)
     
     static func createGame() -> ConcentrationGame<String> {
-        var deck = ConcentrationGame<String>(numberOfPairsOfCards: emojis.count) { index in
+        var deck = ConcentrationGame<String>(numberOfPairsOfCards: pairCount) { index in
             emojis[index]
         }
         
