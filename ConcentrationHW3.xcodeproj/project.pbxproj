@@ -14,6 +14,7 @@
 		A25E1EBF26E981C000452E1E /* ConcentrationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E1EBE26E981C000452E1E /* ConcentrationGame.swift */; };
 		A25E1EC126E982EE00452E1E /* EmojiConcentrationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E1EC026E982EE00452E1E /* EmojiConcentrationGame.swift */; };
 		A25E1EC326EA513A00452E1E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E1EC226EA513A00452E1E /* CardView.swift */; };
+		A25E1EC926EA5B9700452E1E /* Array+Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E1EC826EA5B9700452E1E /* Array+Index.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		A25E1EBE26E981C000452E1E /* ConcentrationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationGame.swift; sourceTree = "<group>"; };
 		A25E1EC026E982EE00452E1E /* EmojiConcentrationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiConcentrationGame.swift; sourceTree = "<group>"; };
 		A25E1EC226EA513A00452E1E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		A25E1EC826EA5B9700452E1E /* Array+Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Index.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,11 +59,12 @@
 		A25E1EAF26E91A6100452E1E /* ConcentrationHW3 */ = {
 			isa = PBXGroup;
 			children = (
-				A25E1EC626EA521900452E1E /* ViewModel */,
-				A25E1EC526EA521300452E1E /* View */,
-				A25E1EC426EA520C00452E1E /* Model */,
 				A25E1EB426E91A6800452E1E /* Assets.xcassets */,
+				A25E1EC426EA520C00452E1E /* Model */,
 				A25E1EB626E91A6800452E1E /* Preview Content */,
+				A25E1EC726EA5B8400452E1E /* Utility */,
+				A25E1EC526EA521300452E1E /* View */,
+				A25E1EC626EA521900452E1E /* ViewModel */,
 			);
 			path = ConcentrationHW3;
 			sourceTree = "<group>";
@@ -98,6 +101,14 @@
 				A25E1EC026E982EE00452E1E /* EmojiConcentrationGame.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A25E1EC726EA5B8400452E1E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A25E1EC826EA5B9700452E1E /* Array+Index.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				A25E1EBF26E981C000452E1E /* ConcentrationGame.swift in Sources */,
 				A25E1EB326E91A6100452E1E /* EmojiGameView.swift in Sources */,
 				A25E1EB126E91A6100452E1E /* ConcentrationHW3App.swift in Sources */,
+				A25E1EC926EA5B9700452E1E /* Array+Index.swift in Sources */,
 				A25E1EC326EA513A00452E1E /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
