@@ -15,7 +15,9 @@ struct ContentView: View {
     var body: some View {
         HStack {
             ForEach(emojiGame.cards) { card in
-                CardView(card: card).onTapGesture(perform: { emojiGame.choose(card: card)
+                CardView(card: card)
+                    .aspectRatio(2/3, contentMode: .fit)
+                    .onTapGesture(perform: { emojiGame.choose(card: card)
                 })
             }
         }
