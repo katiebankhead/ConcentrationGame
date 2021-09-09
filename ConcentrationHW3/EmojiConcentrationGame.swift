@@ -15,9 +15,15 @@ class EmojiConcentrationGame {
     static let emojis = ["🥖", "🧋", "🍓"]
     
     static func createGame() -> ConcentrationGame<String> {
-        ConcentrationGame<String>(numberOfPairsOfCards: emojis.count) { index in
+        var deck = ConcentrationGame<String>(numberOfPairsOfCards: emojis.count) { index in
             emojis[index]
         }
+        
+        if deck.cards.count > 0 {
+            deck.cards.shuffle()
+        }
+        
+        return deck
     }
     
     // MARK: - Access to model
