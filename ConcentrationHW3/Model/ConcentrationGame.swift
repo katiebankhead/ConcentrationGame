@@ -9,8 +9,10 @@
 
 import Foundation
 
-struct ConcentrationGame<CardContent> {
+struct ConcentrationGame<CardContent> where CardContent: Equatable {
     var cards: Array<Card>
+    
+    var indexOfTheOnlyFaceUpCard: Int?
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = Array<Card>()
@@ -24,16 +26,32 @@ struct ConcentrationGame<CardContent> {
     }
     
     mutating func choose(_ card: Card) {
-        print("You chose \(card)")
-        // find the corresponding card in the actual cards array
-        // flip card
-        if let cardIndex = cards.index(of: card) {
-            cards[cardIndex].isFaceUp.toggle()
+        // find the corresponding card in the actual cards array, flip card
+        if let chosenIndex = cards.firstIndex(matching: card),
+                !cards[chosenIndex].isFaceUp,
+                !cards[chosenIndex].isMatched {
+            
+            if let potentialMatchIndex = indexOfTheOnlyFaceUpCard {
+                if cards[potentialMatchIndex].content == cards[chosenIndex].content {
+                    cards[chosenIndex].isMatched = true
+                    cards[potentialMatchIndex].isMatched = true
+                }
+                
+                indexOfTheOnlyFaceUpCard = nil
+            } else {
+                for index in cards.indices {
+                    cards[index].isFaceUp = false
+                }
+                
+                indexOfTheOnlyFaceUpCard = chosenIndex
+            }
+            
+            cards[chosenIndex].isFaceUp.toggle()
         }
     }
     
     struct Card: Identifiable {
-        var isFaceUp = true
+        var isFaceUp = false
         var isMatched = false
         var content: CardContent
         var id: Int
