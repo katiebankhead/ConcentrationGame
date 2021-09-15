@@ -13,13 +13,18 @@ struct CardView: View {
     var body: some View {
         GeometryReader {  geometry in
             ZStack {
-                if card.isFaceUp {
+                if card.isMatched && !card.isFaceUp {
                     RoundedRectangle(cornerRadius: 10).fill(Color.white)
-                    RoundedRectangle(cornerRadius: Constants.cardCornerRadius).stroke()
-                    Text(card.content)
-                        .font(systemFont(for: geometry.size))
+                    RoundedRectangle(cornerRadius: Constants.cardCornerRadius).stroke(Color.white)
                 } else {
-                    RoundedRectangle(cornerRadius: Constants.cardCornerRadius)
+                    if card.isFaceUp {
+                        RoundedRectangle(cornerRadius: 10).fill(Color.white)
+                        RoundedRectangle(cornerRadius: Constants.cardCornerRadius).stroke()
+                        Text(card.content)
+                            .font(systemFont(for: geometry.size))
+                    } else {
+                        RoundedRectangle(cornerRadius: Constants.cardCornerRadius)
+                    }
                 }
             }
         }
