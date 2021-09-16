@@ -10,8 +10,8 @@
 import Foundation
 
 struct ConcentrationGame<CardContent> where CardContent: Equatable {
-    var cards: Array<Card>
-    var points: Int = 0
+    private(set) var cards: Array<Card>
+    private(set) var points: Int = 0
     
     var indexOfTheOnlyFaceUpCard: Int?
     
@@ -70,11 +70,11 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
     }
     
     struct Card: Identifiable {
-        var isFaceUp = false
-        var isMatched = false
-        var isAlreadySeen = false
-        var content: CardContent
-        var id: Int
+        fileprivate(set) var isFaceUp = false
+        fileprivate(set) var isMatched = false
+        fileprivate(set) var isAlreadySeen = false
+        fileprivate(set) var content: CardContent
+        fileprivate(set) var id: Int
 
     }
 }
