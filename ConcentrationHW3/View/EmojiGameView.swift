@@ -36,19 +36,21 @@ struct EmojiGameView: View {
             }
             Spacer()
             HStack{
-//                ZStack {
-//                    Rectangle()
-//                        .stroke(.black)
-//                        .frame(width: 150, height: 50)
-//                    Text("14")
-//                }
-//                Spacer()
+                ZStack {
+                    Rectangle()
+                        .stroke(.black)
+                        .frame(width: 150, height: 50)
+                    Text("\(emojiGame.points)")
+                        .fontWeight(.bold)
+                }
+                Spacer()
                 ZStack {
                     Capsule()
                         .fill(Color.green)
                         .frame(width: 150, height: 50)
                     Text("New Game")
                         .font(.body)
+                        .fontWeight(.bold)
                 }
                 .onTapGesture(perform: { emojiGame.reset()})
             }
