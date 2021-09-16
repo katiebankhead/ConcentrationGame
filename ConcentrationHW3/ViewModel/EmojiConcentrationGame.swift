@@ -15,15 +15,9 @@ class EmojiConcentrationGame: ObservableObject {
     static let emojis = ["🥖", "🧋", "🍓", "🍬", "🫐"]
         
     static func createGame() -> ConcentrationGame<String> {
-        var deck = ConcentrationGame<String>(numberOfPairsOfCards: Int.random(in: 2...5)) { index in
+        ConcentrationGame<String>(numberOfPairsOfCards: Int.random(in: 2...5)) { index in
             emojis[index]
         }
-        
-        if deck.cards.count > 0 {
-            deck.cards.shuffle()
-        }
-        
-        return deck
     }
     
     // MARK: - Access to model

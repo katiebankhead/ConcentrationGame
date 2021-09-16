@@ -17,10 +17,6 @@ struct EmojiGameView: View {
         Array(repeating: GridItem(.flexible()), count: Int(size.width / Constants.desiredCardWidth))
     }
     
-    func newGame() -> Void {
-        print("start new game")
-    }
-    
     var body: some View {
         VStack {
             GeometryReader { geometry in
@@ -34,7 +30,6 @@ struct EmojiGameView: View {
                 .padding()
                 .foregroundColor(.blue)
             }
-            Spacer()
             HStack{
                 ZStack {
                     Rectangle()
@@ -44,14 +39,7 @@ struct EmojiGameView: View {
                         .fontWeight(.bold)
                 }
                 Spacer()
-                ZStack {
-                    Capsule()
-                        .fill(Color.green)
-                        .frame(width: 150, height: 50)
-                    Text("New Game")
-                        .font(.body)
-                        .fontWeight(.bold)
-                }
+                Button(text: "New Game", backgroundColor: .green)
                 .onTapGesture(perform: { emojiGame.reset()})
             }
             .padding()
@@ -60,6 +48,22 @@ struct EmojiGameView: View {
     
     private struct Constants {
         static let desiredCardWidth: CGFloat = 125
+    }
+}
+
+struct Button: View {
+    var text: String
+    var backgroundColor: Color
+    
+    var body: some View {
+        ZStack {
+            Capsule()
+                .fill(backgroundColor)
+                .frame(width: 150, height: 50)
+            Text(text)
+                .font(.body)
+                .fontWeight(.bold)
+        }
     }
 }
 
