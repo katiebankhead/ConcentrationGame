@@ -17,17 +17,42 @@ struct EmojiGameView: View {
         Array(repeating: GridItem(.flexible()), count: Int(size.width / Constants.desiredCardWidth))
     }
     
+    func newGame() -> Void {
+        print("start new game")
+    }
+    
     var body: some View {
-        GeometryReader { geometry in
-            LazyVGrid(columns: columns(for: geometry.size)) {
-                ForEach(emojiGame.cards) { card in
-                    CardView(card: card)
-                        .onTapGesture(perform: { emojiGame.choose(card)
-                    })
+        VStack {
+            GeometryReader { geometry in
+                LazyVGrid(columns: columns(for: geometry.size)) {
+                    ForEach(emojiGame.cards) { card in
+                        CardView(card: card)
+                            .onTapGesture(perform: { emojiGame.choose(card)
+                        })
+                    }
                 }
+                .padding()
+                .foregroundColor(.blue)
+            }
+            Spacer()
+            HStack{
+//                ZStack {
+//                    Rectangle()
+//                        .stroke(.black)
+//                        .frame(width: 150, height: 50)
+//                    Text("14")
+//                }
+//                Spacer()
+                ZStack {
+                    Capsule()
+                        .fill(Color.green)
+                        .frame(width: 150, height: 50)
+                    Text("New Game")
+                        .font(.body)
+                }
+                .onTapGesture(perform: { emojiGame.reset()})
             }
             .padding()
-            .foregroundColor(.blue)
         }
     }
     
