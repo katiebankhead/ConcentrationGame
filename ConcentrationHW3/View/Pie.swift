@@ -16,8 +16,8 @@ struct Pie: Shape {
         let center = CGPoint(x: rect.midX, y: rect.midY)
         let radius = min(rect.width, rect.height) / 2
         let start = CGPoint(
-            x: radius * cos(startAngle.radians),
-            y: radius * sin(startAngle.radians)
+            x: center.x + radius * cos(startAngle.radians),
+            y: center.y + radius * sin(startAngle.radians)
         )
         
         var p = Path()
@@ -25,6 +25,7 @@ struct Pie: Shape {
         p.move(to: center)
         p.addLine(to: start)
         p.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
+        p.move(to: center)
         
         return p
     }
@@ -32,8 +33,9 @@ struct Pie: Shape {
 
 struct Pie_Previews: PreviewProvider {
     static var previews: some View {
-        Pie(startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 105))
+        Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 105-90))
             .foregroundColor(.orange)
             .opacity(0.4)
+            .padding()
     }
 }
