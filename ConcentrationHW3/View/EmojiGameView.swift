@@ -23,8 +23,11 @@ struct EmojiGameView: View {
                 LazyVGrid(columns: columns(for: geometry.size)) {
                     ForEach(emojiGame.cards) { card in
                         CardView(card: card)
-                            .onTapGesture(perform: { emojiGame.choose(card)
-                        })
+                            .onTapGesture {
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    emojiGame.choose(card)
+                                }
+                        }
                     }
                 }
                 .padding()

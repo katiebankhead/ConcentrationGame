@@ -13,20 +13,18 @@ struct CardView: View {
     var body: some View {
         GeometryReader {  geometry in
             ZStack {
-                if card.isMatched && !card.isFaceUp {
-                    RoundedRectangle(cornerRadius: 10).fill(Color.white)
-                    RoundedRectangle(cornerRadius: Constants.cardCornerRadius).stroke(Color.white)
-                } else {
-                    if card.isFaceUp {
-                        RoundedRectangle(cornerRadius: 10).fill(Color.white)
-                        RoundedRectangle(cornerRadius: Constants.cardCornerRadius).stroke()
-                        Text(card.content)
-                            .font(systemFont(for: geometry.size))
-                    } else {
-                        RoundedRectangle(cornerRadius: Constants.cardCornerRadius)
-                    }
+                if !card.isMatched || card.isFaceUp {
+                    Pie(startAngle: Angle(degrees: 0 - 90), endAngle: Angle(degrees: 105 - 90), clockwise: true)
+                        .opacity(0.4)
+                    Text(card.content)
+                        .font(systemFont(for: geometry.size))
+                        .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                        .animation(card.isMatched
+                                   ? .linear(duration: 1.0).repeatForever(autoreverses: false)
+                                   : .default)
                 }
             }
+            .cardify(isFaceUp: card.isFaceUp)
         }
         .aspectRatio(2/3, contentMode: .fit)
     }
@@ -46,7 +44,8 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: ConcentrationGame<String>.Card(content: "🍕", id: 13))
+        CardView(card: ConcentrationGame<String>.Card(isFaceUp: true, isMatched: false, content: "🐙", id: 13))
+            .foregroundColor(.pink)
             .padding(50)
     }
 }

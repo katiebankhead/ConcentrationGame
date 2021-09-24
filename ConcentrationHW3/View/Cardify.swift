@@ -7,14 +7,29 @@
 
 import SwiftUI
 
-struct Cardify: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct Cardify: ViewModifier {
+    var isFaceUp: Bool
+    
+    func body(content: Content) -> some View {
+        ZStack {
+            if isFaceUp {
+                RoundedRectangle(cornerRadius: Constants.cardCornerRadius).fill(Color.white)
+                RoundedRectangle(cornerRadius: Constants.cardCornerRadius).stroke()
+                content
+            } else {
+                RoundedRectangle(cornerRadius: Constants.cardCornerRadius)
+            }
+        }
+        .rotation3DEffect(Angle.degrees(isFaceUp ? 0 : 180), axis: (0, 1, 0))
+    }
+    
+    private struct Constants {
+        static let cardCornerRadius: CGFloat = 10
     }
 }
 
-struct Cardify_Previews: PreviewProvider {
-    static var previews: some View {
-        Cardify()
+extension View {
+    func cardify(isFaceUp: Bool) -> some View {
+        modifier(Cardify(isFaceUp: isFaceUp))
     }
 }
