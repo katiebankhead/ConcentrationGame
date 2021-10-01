@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A2267CCB26F394E1001F02ED /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2267CCA26F394E1001F02ED /* Pie.swift */; };
+		A2435A8F2707834500F52B0A /* Array+Only.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2435A8E2707834500F52B0A /* Array+Only.swift */; };
 		A25E1EB126E91A6100452E1E /* ConcentrationHW3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E1EB026E91A6100452E1E /* ConcentrationHW3App.swift */; };
 		A25E1EB326E91A6100452E1E /* EmojiGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E1EB226E91A6100452E1E /* EmojiGameView.swift */; };
 		A25E1EB526E91A6800452E1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A25E1EB426E91A6800452E1E /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		A2267CCA26F394E1001F02ED /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
+		A2435A8E2707834500F52B0A /* Array+Only.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Only.swift"; sourceTree = "<group>"; };
 		A25E1EAD26E91A6100452E1E /* ConcentrationHW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcentrationHW3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E1EB026E91A6100452E1E /* ConcentrationHW3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationHW3App.swift; sourceTree = "<group>"; };
 		A25E1EB226E91A6100452E1E /* EmojiGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiGameView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				A25E1EC826EA5B9700452E1E /* Array+Identifiable.swift */,
+				A2435A8E2707834500F52B0A /* Array+Only.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				A25E1EC126E982EE00452E1E /* EmojiConcentrationGame.swift in Sources */,
 				A25E1EBF26E981C000452E1E /* ConcentrationGame.swift in Sources */,
 				A28367BC26FA21170078EF34 /* Cardify.swift in Sources */,
+				A2435A8F2707834500F52B0A /* Array+Only.swift in Sources */,
 				A25E1EB326E91A6100452E1E /* EmojiGameView.swift in Sources */,
 				A25E1EB126E91A6100452E1E /* ConcentrationHW3App.swift in Sources */,
 				A2267CCB26F394E1001F02ED /* Pie.swift in Sources */,
