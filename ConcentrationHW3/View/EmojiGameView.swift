@@ -14,7 +14,7 @@ struct EmojiGameView: View {
     
     // no side effects, so function name is a noun
     private func columns(for size: CGSize) -> [GridItem] {
-        Array(repeating: GridItem(.flexible()), count: Int(size.width / Constants.desiredCardWidth))
+        Array(repeating: GridItem(.fixed(Constants.desiredCardWidth)), count: Int(size.width / Constants.desiredCardWidth))
     }
     
     var body: some View {
@@ -50,7 +50,7 @@ struct EmojiGameView: View {
     }
     
     private struct Constants {
-        static let desiredCardWidth: CGFloat = 125
+        static let desiredCardWidth: CGFloat = 110
     }
 }
 

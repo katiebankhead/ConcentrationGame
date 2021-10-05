@@ -13,10 +13,12 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
     private(set) var points: Int = 0
     
-    var indexOfTheOnlyFaceUpCard: Int? {
-        get { cards.indices.filter { cards[$0].isFaceUp }.only }
-        set { cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) } }
-    }
+    var indexOfTheOnlyFaceUpCard: Int?
+    
+//    var indexOfTheOnlyFaceUpCard: Int? {
+//        get { cards.indices.filter { cards[$0].isFaceUp }.only }
+//        set { cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) } }
+//    }
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = Array<Card>()
@@ -24,8 +26,8 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
         for pairIndex in 0..<numberOfPairsOfCards {
             let content = cardContentFactory(pairIndex)
             
-            cards.append(Card(content: content, id: pairIndex * 2))
-            cards.append(Card(content: content, id: pairIndex * 2 + 1))
+            cards.append(Card(content: content))
+            cards.append(Card(content: content))
         }
         
         cards.shuffle()
@@ -59,9 +61,15 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
                     }
                 }
                 
-                cards[chosenIndex].isFaceUp = true
+                indexOfTheOnlyFaceUpCard = nil
+//                cards[chosenIndex].isFaceUp = true
             } else {
+                for index in cards.indices {
+                    cards[index].isFaceUp = false
+                }
+                
                 indexOfTheOnlyFaceUpCard = chosenIndex
+
             }
             
             cards[chosenIndex].isFaceUp.toggle()
@@ -73,7 +81,7 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
         fileprivate(set) var isMatched = false
         fileprivate(set) var isAlreadySeen = false
         fileprivate(set) var content: CardContent
-        fileprivate(set) var id: Int
+        fileprivate(set) var id = UUID()
 
     }
 }
