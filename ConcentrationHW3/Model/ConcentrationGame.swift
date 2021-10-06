@@ -11,14 +11,14 @@ import Foundation
 
 struct ConcentrationGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
-    private(set) var points: Int = 0
+    
+    var score: Int {
+        cards.reduce(0) { total, card in
+            total + card.score
+        }
+    }
     
     var indexOfTheOnlyFaceUpCard: Int?
-    
-//    var indexOfTheOnlyFaceUpCard: Int? {
-//        get { cards.indices.filter { cards[$0].isFaceUp }.only }
-//        set { cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) } }
-//    }
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = Array<Card>()
@@ -45,22 +45,7 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
                 if cards[potentialMatchIndex].content == cards[chosenIndex].content {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
-                    points += 2
-                } else {
-                    // penalize 1 point for every previously seen card in a mismatch
-                    if cards[chosenIndex].isAlreadySeen {
-                        points -= 1
-                    } else {
-                        cards[chosenIndex].isAlreadySeen = true
-                    }
-                    
-                    if cards[potentialMatchIndex].isAlreadySeen {
-                        points -= 1
-                    } else {
-                        cards[potentialMatchIndex].isAlreadySeen = true
-                    }
                 }
-                
                 indexOfTheOnlyFaceUpCard = nil
 //                cards[chosenIndex].isFaceUp = true
             } else {
@@ -69,19 +54,89 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
                 }
                 
                 indexOfTheOnlyFaceUpCard = chosenIndex
-
             }
             
+            cards[chosenIndex].viewCount += 1
             cards[chosenIndex].isFaceUp.toggle()
         }
     }
     
     struct Card: Identifiable {
-        fileprivate(set) var isFaceUp = false
-        fileprivate(set) var isMatched = false
-        fileprivate(set) var isAlreadySeen = false
+        fileprivate(set) var isFaceUp = false {
+            didSet {
+                if isFaceUp {
+                    startUsingBonusTime()
+                } else {
+                    stopUsingBonusTime()
+                }
+            }
+        }
+        fileprivate(set) var isMatched = false {
+            didSet {
+                stopUsingBonusTime()
+            }
+        }
+        fileprivate(set) var viewCount = 0
         fileprivate(set) var content: CardContent
         fileprivate(set) var id = UUID()
+        
+        var score: Int {
+            if isMatched {
+                return 3 - viewCount + Int(bonusRemaining * 5)
+            }
 
+            if viewCount > 0 {
+                return -viewCount + 1
+            }
+
+            return 0
+        }
+
+        // MARK: - Bonus Time
+        
+        // static stored properties not supported in generic types
+//        private struct Constants {
+//            static let bonusTimeLimit: TimeInterval = 12
+//            static let pastFaceUpTime: TimeInterval = 0
+//        }
+        
+        var bonusTimeLimit: TimeInterval = 12
+        var lastFaceUpTime: Date?
+        var pastFaceUpTime: TimeInterval = 0
+        
+        var bonusTimeRemaining: TimeInterval {
+            max(0, bonusTimeLimit - faceUpTime)
+        }
+        
+        var bonusRemaining: Double {
+            (bonusTimeLimit > 0 && bonusTimeRemaining > 0) ? bonusTimeRemaining / bonusTimeLimit : 0
+        }
+        
+        var hasEarnedBonus: Bool {
+            isMatched && bonusTimeRemaining > 0
+        }
+        
+        var isConsumingBonusTime: Bool {
+            isFaceUp && !isMatched && bonusTimeRemaining > 0
+        }
+        
+        private var faceUpTime: TimeInterval {
+            if let lastFaceUpTime = lastFaceUpTime {
+                return pastFaceUpTime + Date().timeIntervalSince(lastFaceUpTime)
+            } else {
+                return pastFaceUpTime
+            }
+        }
+        
+        private mutating func startUsingBonusTime() {
+            if isConsumingBonusTime && lastFaceUpTime == nil {
+                lastFaceUpTime = Date()
+            }
+        }
+        
+        private mutating func stopUsingBonusTime() {
+            pastFaceUpTime = faceUpTime
+            lastFaceUpTime = nil
+        }
     }
 }

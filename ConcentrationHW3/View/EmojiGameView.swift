@@ -38,7 +38,7 @@ struct EmojiGameView: View {
                     Rectangle()
                         .stroke(.black)
                         .frame(width: 150, height: 50)
-                    Text("\(emojiGame.points)")
+                    Text("\(emojiGame.score)")
                         .fontWeight(.bold)
                 }
                 Spacer()

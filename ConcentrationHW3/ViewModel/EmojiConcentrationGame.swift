@@ -26,8 +26,8 @@ class EmojiConcentrationGame: ObservableObject {
         game.cards
     }
     
-    var points: Int {
-        game.points
+    var score: Int {
+        game.score
     }
     
     // MARK: - Intents
