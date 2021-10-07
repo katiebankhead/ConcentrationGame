@@ -36,9 +36,12 @@ struct CardView: View {
                     Text(card.content)
                         .font(systemFont(for: geometry.size))
                         .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
-                        .animation(card.isMatched
-                                   ? .linear(duration: 1.0).repeatForever(autoreverses: false)
-                                   : .default)
+                        .animation(
+                            card.isMatched
+                            ? .linear(duration: 1.0).repeatForever(autoreverses: false)
+                            : .default,
+                            value: card.isMatched
+                        )
                 }
                 .cardify(isFaceUp: card.isFaceUp)
                 .transition(.scale)
@@ -54,13 +57,11 @@ struct CardView: View {
         Font.system(size: min(size.width, size.height) * Constants.fontScaleFactor)
     }
     
+    // MARK: - Drawing constants
     private struct Constants {
         static let cardCornerRadius: CGFloat = 10
         static let fontScaleFactor = 0.75
     }
-    
-    // MARK: - Drawing constants
-    
 }
 
 struct CardView_Previews: PreviewProvider {
