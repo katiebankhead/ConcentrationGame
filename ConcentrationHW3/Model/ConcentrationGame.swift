@@ -94,15 +94,9 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
 
         // MARK: - Bonus Time
         
-        // static stored properties not supported in generic types
-//        private struct Constants {
-//            static let bonusTimeLimit: TimeInterval = 12
-//            static let pastFaceUpTime: TimeInterval = 0
-//        }
-        
-        var bonusTimeLimit: TimeInterval = 12
+        var bonusTimeLimit: TimeInterval = Constants.bonusTimeLimit
         var lastFaceUpTime: Date?
-        var pastFaceUpTime: TimeInterval = 0
+        var pastFaceUpTime: TimeInterval = Constants.pastFaceUpTime
         
         var bonusTimeRemaining: TimeInterval {
             max(0, bonusTimeLimit - faceUpTime)
@@ -139,4 +133,9 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
             lastFaceUpTime = nil
         }
     }
+}
+
+fileprivate struct Constants {
+    static let bonusTimeLimit: TimeInterval = 12
+    static let pastFaceUpTime: TimeInterval = 0
 }
