@@ -35,17 +35,17 @@ struct EmojiGameView: View {
     
     var gameBody: some View {
         GeometryReader { geometry in
-            LazyVGrid(columns: columns(for: geometry.size)) {
-                ForEach(emojiGame.cards) { card in
+            AspectVGrid(items: emojiGame.cards, aspectRatio: 2/3) {
+                card in
                     CardView(card: card)
+                    .padding(geometry.size.width * 0.01)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.5)) {
                                 emojiGame.choose(card)
                             }
                     }
-                }
             }
-            .padding()
+            .padding(geometry.size.width * 0.01)
             .foregroundColor(.blue)
         }
     }

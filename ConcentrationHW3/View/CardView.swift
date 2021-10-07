@@ -44,7 +44,6 @@ struct CardView: View {
                 .transition(.scale)
             }
         }
-        .aspectRatio(2/3, contentMode: .fit)
     }
     
     private func angle(for degrees: Double) -> Angle {
