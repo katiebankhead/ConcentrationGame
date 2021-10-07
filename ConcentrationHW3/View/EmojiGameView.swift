@@ -55,22 +55,6 @@ struct EmojiGameView: View {
     }
 }
 
-//struct Button: View {
-//    var text: String
-//    var backgroundColor: Color
-//
-//    var body: some View {
-//        ZStack {
-//            Capsule()
-//                .fill(backgroundColor)
-//                .frame(width: 150, height: 50)
-//            Text(text)
-//                .font(.body)
-//                .fontWeight(.bold)
-//        }
-//    }
-//}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         EmojiGameView(emojiGame: EmojiConcentrationGame())
