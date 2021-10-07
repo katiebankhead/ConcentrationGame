@@ -18,34 +18,35 @@ struct EmojiGameView: View {
     }
     
     var body: some View {
-        VStack {
-            GeometryReader { geometry in
-                LazyVGrid(columns: columns(for: geometry.size)) {
-                    ForEach(emojiGame.cards) { card in
-                        CardView(card: card)
-                            .onTapGesture {
-                                withAnimation(.easeInOut(duration: 0.5)) {
-                                    emojiGame.choose(card)
-                                }
-                        }
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                gameBody
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationTitle("Concentration")
+            .navigationBarItems(leading: Button("New Game") {
+                withAnimation {
+                    emojiGame.reset()
+                }
+            }, trailing: Text("Score: \(emojiGame.score)"))
+            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+    
+    var gameBody: some View {
+        GeometryReader { geometry in
+            LazyVGrid(columns: columns(for: geometry.size)) {
+                ForEach(emojiGame.cards) { card in
+                    CardView(card: card)
+                        .onTapGesture {
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                emojiGame.choose(card)
+                            }
                     }
                 }
-                .padding()
-                .foregroundColor(.blue)
-            }
-            HStack{
-                ZStack {
-                    Rectangle()
-                        .stroke(.black)
-                        .frame(width: 150, height: 50)
-                    Text("\(emojiGame.score)")
-                        .fontWeight(.bold)
-                }
-                Spacer()
-                Button(text: "New Game", backgroundColor: .green)
-                .onTapGesture(perform: { emojiGame.reset()})
             }
             .padding()
+            .foregroundColor(.blue)
         }
     }
     
@@ -54,21 +55,21 @@ struct EmojiGameView: View {
     }
 }
 
-struct Button: View {
-    var text: String
-    var backgroundColor: Color
-    
-    var body: some View {
-        ZStack {
-            Capsule()
-                .fill(backgroundColor)
-                .frame(width: 150, height: 50)
-            Text(text)
-                .font(.body)
-                .fontWeight(.bold)
-        }
-    }
-}
+//struct Button: View {
+//    var text: String
+//    var backgroundColor: Color
+//
+//    var body: some View {
+//        ZStack {
+//            Capsule()
+//                .fill(backgroundColor)
+//                .frame(width: 150, height: 50)
+//            Text(text)
+//                .font(.body)
+//                .fontWeight(.bold)
+//        }
+//    }
+//}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
