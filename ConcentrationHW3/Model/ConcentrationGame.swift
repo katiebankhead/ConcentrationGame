@@ -61,6 +61,12 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
         }
     }
     
+    mutating func turnFaceDown(_ card: Card) {
+        if let chosenIndex = cards.firstIndex(matching: card), cards[chosenIndex].isMatched {
+            cards[chosenIndex].isFaceUp = false
+        }
+    }
+    
     struct Card: Identifiable {
         fileprivate(set) var isFaceUp = false {
             didSet {

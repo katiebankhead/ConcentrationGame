@@ -25,8 +25,8 @@ struct GameMenuView: View {
                             .padding()
                     })
                 }
-                Section(header: Text("Settings")) {
-                    
+                Section() {
+                    NavigationLink("Settings", destination: SettingsView())
                 }
             }
             .navigationTitle("Project 1")

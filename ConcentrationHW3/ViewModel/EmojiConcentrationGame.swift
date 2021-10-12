@@ -13,6 +13,8 @@ class EmojiConcentrationGame: ObservableObject {
     @Published private var game = createGame()
     
     private static let emojis = ["🥖", "🧋", "🍓", "🍬", "🫐", "✨", "🐙"]
+    
+    var hasDealt = false
         
     private static func createGame() -> ConcentrationGame<String> {
         ConcentrationGame<String>(numberOfPairsOfCards: Int.random(in: 2...7)) { index in
@@ -40,5 +42,12 @@ class EmojiConcentrationGame: ObservableObject {
     
     func reset() {
         game = EmojiConcentrationGame.createGame()
+        hasDealt = false
+    }
+
+    func turnFaceDown(_ card: ConcentrationGame<String>.Card) {
+        if card.isMatched {
+            game.turnFaceDown(card)
+        }
     }
 }
