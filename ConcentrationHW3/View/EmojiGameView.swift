@@ -25,6 +25,7 @@ struct EmojiGameView: View {
         .navigationBarItems(leading: Button("New Game") {
             withAnimation {
                 emojiGame.reset()
+                dealNewGame()
             }
         }, trailing: Text("Score: \(emojiGame.score)"))
         .navigationBarTitleDisplayMode(.inline)
@@ -57,13 +58,16 @@ struct EmojiGameView: View {
         .offset(x: randomOffset(), y: randomOffset())
         .padding(.bottom)
         .onAppear {
-            for card in emojiGame.cards {
-                withAnimation(dealAnimation(for: card)) {
-                    deal(card)
-                }
-            }
-            
+            dealNewGame()
             emojiGame.hasDealt = true
+        }
+    }
+    
+    private func dealNewGame() {
+        for card in emojiGame.cards {
+            withAnimation(dealAnimation(for: card)) {
+                deal(card)
+            }
         }
     }
     
