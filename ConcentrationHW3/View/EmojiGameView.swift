@@ -16,20 +16,18 @@ struct EmojiGameView: View {
     @Namespace private var dealingCards
     
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .bottom) {
-                gameBody
-                deckBody
-            }
-            .edgesIgnoringSafeArea(.bottom)
-            .navigationTitle("Concentration")
-            .navigationBarItems(leading: Button("New Game") {
-                withAnimation {
-                    emojiGame.reset()
-                }
-            }, trailing: Text("Score: \(emojiGame.score)"))
-            .navigationBarTitleDisplayMode(.inline)
+        ZStack(alignment: .bottom) {
+            gameBody
+            deckBody
         }
+        .edgesIgnoringSafeArea(.bottom)
+        .navigationTitle("Concentration")
+        .navigationBarItems(leading: Button("New Game") {
+            withAnimation {
+                emojiGame.reset()
+            }
+        }, trailing: Text("Score: \(emojiGame.score)"))
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     var deckBody: some View {

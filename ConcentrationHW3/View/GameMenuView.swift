@@ -7,30 +7,6 @@
 
 import SwiftUI
 
-// move to model Themes file
-enum GameType {
-    case emojiMojo
-    case shapeScape
-    case templeMatch
-}
-
-struct Theme {
-    var name: String
-    var gameType: GameType
-    var emojis: [String]
-    var color: Color
-    var numberOfPairsOfCards: Int
-}
-
-let themes = [
-    Theme(name: "Halloween",
-               gameType: .emojiMojo,
-               emojis: ["🎃", "👻", "🍭", "🕸", "🧙‍♀️", "🦇", "💀"],
-               color: .orange,
-               numberOfPairsOfCards: 7
-    )
-]
-
 struct GameMenuView: View {
     
     var body: some View {
@@ -38,8 +14,7 @@ struct GameMenuView: View {
             Form {
                 Section(header: Text("Games")) {
                     NavigationLink(themes[0].name, destination: {
-                        Circle().fill(.red)
-                            .padding()
+                        EmojiGameView(emojiGame: EmojiConcentrationGame())
                     })
                     NavigationLink("Shape Scape", destination: {
                         Circle().fill(.green)
@@ -49,6 +24,9 @@ struct GameMenuView: View {
                         Circle().fill(.blue)
                             .padding()
                     })
+                }
+                Section(header: Text("Settings")) {
+                    
                 }
             }
             .navigationTitle("Project 1")

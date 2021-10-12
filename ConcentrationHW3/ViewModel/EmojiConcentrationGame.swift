@@ -20,6 +20,8 @@ class EmojiConcentrationGame: ObservableObject {
         }
     }
     
+    @AppStorage(Settings.playSoundKey) var playSound: Bool = false
+    
     // MARK: - Access to model
     
     var cards: Array<ConcentrationGame<String>.Card> {
