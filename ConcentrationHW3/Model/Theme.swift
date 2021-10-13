@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GameType {
+enum GameType: CaseIterable {
     case emojiMojo
     case shapeScape
     case templeMatch
@@ -85,7 +85,7 @@ let themes = [
                          "okinawa_temple",
                          "urdaneta_temple",
                          "bengaluru_temple"],
-               color: "green",
+               color: "pink",
                numberOfPairsOfCards: 7
     ),
     Theme(name: "Other Temples",
@@ -96,7 +96,7 @@ let themes = [
                          "laie_temple",
                          "mesa_temple",
                          "nauvoo_temple"],
-               color: "magenta",
+               color: "mint",
                numberOfPairsOfCards: 6
     ),
 ]
