@@ -11,6 +11,7 @@
 		A21F4EE9270EC5E90040706D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F4EE8270EC5E90040706D /* Theme.swift */; };
 		A21F4EEB270F7A090040706D /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F4EEA270F7A090040706D /* AspectVGrid.swift */; };
 		A21F4EED271534080040706D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F4EEC271534080040706D /* SettingsView.swift */; };
+		A21F4EEF271667760040706D /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F4EEE271667760040706D /* ColorHelper.swift */; };
 		A2267CCB26F394E1001F02ED /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2267CCA26F394E1001F02ED /* Pie.swift */; };
 		A2435A8F2707834500F52B0A /* Array+Only.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2435A8E2707834500F52B0A /* Array+Only.swift */; };
 		A25E1EB126E91A6100452E1E /* ConcentrationHW3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E1EB026E91A6100452E1E /* ConcentrationHW3App.swift */; };
@@ -29,6 +30,7 @@
 		A21F4EE8270EC5E90040706D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A21F4EEA270F7A090040706D /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		A21F4EEC271534080040706D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A21F4EEE271667760040706D /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		A2267CCA26F394E1001F02ED /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 		A2435A8E2707834500F52B0A /* Array+Only.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Only.swift"; sourceTree = "<group>"; };
 		A25E1EAD26E91A6100452E1E /* ConcentrationHW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcentrationHW3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				A25E1EC026E982EE00452E1E /* EmojiConcentrationGame.swift */,
+				A21F4EEE271667760040706D /* ColorHelper.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				A28367BC26FA21170078EF34 /* Cardify.swift in Sources */,
 				A2435A8F2707834500F52B0A /* Array+Only.swift in Sources */,
 				A21F4EE9270EC5E90040706D /* Theme.swift in Sources */,
+				A21F4EEF271667760040706D /* ColorHelper.swift in Sources */,
 				A25E1EB326E91A6100452E1E /* EmojiGameView.swift in Sources */,
 				A25E1EB126E91A6100452E1E /* ConcentrationHW3App.swift in Sources */,
 				A2267CCB26F394E1001F02ED /* Pie.swift in Sources */,

@@ -22,7 +22,7 @@ class EmojiConcentrationGame: ObservableObject {
         
     private static func createGame(theme: Theme) -> ConcentrationGame<String> {
         ConcentrationGame<String>(numberOfPairsOfCards: Int.random(in: 2...theme.numberOfPairsOfCards)) { index in
-            theme.emojis[index]
+            theme.content[index]
         }
     }
     

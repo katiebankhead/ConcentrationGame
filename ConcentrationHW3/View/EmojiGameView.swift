@@ -96,7 +96,7 @@ struct EmojiGameView: View {
                     }
             }
             .padding(geometry.size.width * 0.01)
-            .foregroundColor(Constants.color)
+            .foregroundColor(ColorHelper.color(for: emojiGame.theme.color))
         }
     }
     
@@ -124,7 +124,6 @@ struct EmojiGameView: View {
     
     private struct Constants {
         static let aspectRatio: CGFloat = 2/3
-        static let color = Color.blue
         static let dealDuration = 0.5
         static let deckHeight: CGFloat = 150
         static let deckWidth = deckHeight * aspectRatio

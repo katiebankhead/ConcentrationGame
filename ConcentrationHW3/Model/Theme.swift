@@ -17,7 +17,7 @@ struct Theme: Identifiable, Hashable {
     var id = UUID()
     var name: String
     var gameType: GameType
-    var emojis: [String]
+    var content: [String]
     var color: String // have ViewModel convert to Color
     var numberOfPairsOfCards: Int
 }
@@ -25,38 +25,38 @@ struct Theme: Identifiable, Hashable {
 let themes = [
     Theme(name: "Halloween",
                gameType: .emojiMojo,
-               emojis: ["🎃", "👻", "🍭", "🕸", "🧙‍♀️", "🦇", "💀"],
+               content: ["🎃", "👻", "🍭", "🕸", "🧙‍♀️", "🦇", "💀"],
                color: "orange",
                numberOfPairsOfCards: 7
     ),
     Theme(name: "Faces",
                gameType: .emojiMojo,
-               emojis: ["🥳", "😂", "🤪", "🤩", "😍", "🙃" , "🙄"],
+               content: ["🥳", "😂", "🤪", "🤩", "😍", "🙃" , "🙄"],
                color: "yellow",
                numberOfPairsOfCards: 7
     ),
     Theme(name: "Clothing",
                gameType: .emojiMojo,
-               emojis: ["🧥", "👔", "🥾", "👗", "🧢", "🧣", "🥿"],
+               content: ["🧥", "👔", "🥾", "👗", "🧢", "🧣", "🥿"],
                color: "purple",
                numberOfPairsOfCards: 7
     ),
     Theme(name: "Animals",
                gameType: .emojiMojo,
-               emojis: ["🐙", "🐝", "🐼", "🐴", "🐳", "🐢", "🦔"],
+               content: ["🐙", "🐝", "🐼", "🐴", "🐳", "🐢", "🦔"],
                color: "brown",
                numberOfPairsOfCards: 7
     ),
     Theme(name: "Nature",
                gameType: .emojiMojo,
-               emojis: ["🍁", "✨", "☀️", "🪴", "💐", "❄️", "🌻"],
+               content: ["🍁", "✨", "☀️", "🪴", "💐", "❄️", "🌻"],
                color: "green",
                numberOfPairsOfCards: 7
     ),
     Theme(name: "Food",
                gameType: .emojiMojo,
-               emojis: ["🎂", "🍩", "🫑", "🫐", "🥐", "🍟", "🍠"],
-               color: "orange",
+               content: ["🎂", "🍩", "🫑", "🫐", "🥐", "🍟", "🍠"],
+               color: "blue",
                numberOfPairsOfCards: 7
     )
 ]
