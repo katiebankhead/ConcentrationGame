@@ -20,10 +20,10 @@ struct GameMenuView: View {
                     }
                 }
                 Section() {
-                    NavigationLink("Settings", destination: SettingsView())
+                    NavigationLink("High Scores 🏆", destination: SettingsView())
                 }
                 Section() {
-                    NavigationLink("High Scores", destination: SettingsView())
+                    NavigationLink("Settings ⚙️", destination: SettingsView())
                 }
             }
             .navigationTitle("Concentration Game")

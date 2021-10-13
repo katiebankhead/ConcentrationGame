@@ -11,7 +11,6 @@ import SwiftUI
 struct ConcentrationHW3App: App {
     var body: some Scene {
         WindowGroup {
-//            EmojiGameView(emojiGame: EmojiConcentrationGame())
             GameMenuView()
         }
     }
