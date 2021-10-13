@@ -12,7 +12,7 @@ struct CapsuleCountdown: View {
     var width: CGFloat
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
             Capsule()
                 .frame(width: width, height: 5)
                 .foregroundColor(Color(white: 0, opacity: 0.1))

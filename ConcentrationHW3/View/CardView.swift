@@ -48,24 +48,7 @@ struct CardView: View {
                     .cardify(isFaceUp: card.isFaceUp)
                     .transition(.scale)
                 } else if (gameType == .templeMatch) {
-                    ZStack {
-                        if card.isConsumingBonusTime {
-                            Pie(startAngle: angle(for: 0),
-                                endAngle: angle(for: -animatedBonusRemaining))
-                                .padding(geometry.size.width * 0.04)
-                                .opacity(0.4)
-                                .onAppear {
-                                    animatedBonusRemaining = card.bonusRemaining
-                                    withAnimation(.linear(duration: card.bonusTimeRemaining)) {
-                                        animatedBonusRemaining = 0
-                                    }
-                                }
-                        } else {
-                            Pie(startAngle: angle(for: 0),
-                                endAngle: angle(for: -card.bonusRemaining))
-                                .padding(geometry.size.width * 0.04)
-                                .opacity(0.4)
-                        }
+                    VStack {
                         Image(card.content)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -77,6 +60,23 @@ struct CardView: View {
                                         .repeatForever(autoreverses: true) : .default,
                                 value: card.isMatched
                             )
+                        if card.bonusRemaining > 0 {
+                            if card.isConsumingBonusTime {
+                                CapsuleCountdown(value: animatedBonusRemaining, width: geometry.size.width - 40)
+//                                    .offset(x: 0, y: geometry.size.height / 2 - 20)
+                                    .padding()
+                                    .onAppear {
+                                        animatedBonusRemaining = card.bonusRemaining
+                                        withAnimation(.linear(duration: card.bonusTimeRemaining)) {
+                                            animatedBonusRemaining = 0
+                                        }
+                                    }
+                            } else {
+                                CapsuleCountdown(value: card.bonusRemaining, width: geometry.size.width - 40)
+//                                    .offset(x: 0, y: geometry.size.height / 2 - 20)
+                                    .padding()
+                            }
+                        }
                     }
                     .cardify(isFaceUp: card.isFaceUp)
                     .transition(.scale)
