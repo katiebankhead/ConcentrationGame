@@ -42,11 +42,32 @@ struct EmojiGameView: View {
         }
     }
     
+    var gameBody: some View {
+        GeometryReader { geometry in
+            AspectVGrid(items: emojiGame.cards, aspectRatio: Constants.aspectRatio) { card in
+                    if !isUndealt(card) {
+                        CardView(card: card, gameType: emojiGame.theme.gameType)
+                            .zIndex(zIndex(for: card))
+                            .matchedGeometryEffect(id: card.id, in: dealingCards)
+                            .transition(AnyTransition.asymmetric(insertion: .identity, removal: .scale))
+                            .padding(geometry.size.width * 0.01)
+                            .onTapGesture {
+                                withAnimation {
+                                    emojiGame.choose(card)
+                                }
+                            }
+                    }
+            }
+            .padding(geometry.size.width * 0.01)
+            .foregroundColor(ColorHelper.color(for: emojiGame.theme.color))
+        }
+    }
+    
     var deckBody: some View {
         ZStack {
             ForEach(emojiGame.cards) { card in
                 if isUndealt(card) {
-                    CardView(card: card)
+                    CardView(card: card, gameType: emojiGame.theme.gameType)
                         .zIndex(zIndex(for: card))
                         .matchedGeometryEffect(id: card.id, in: dealingCards)
                         .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .identity))
@@ -76,27 +97,6 @@ struct EmojiGameView: View {
             return CGFloat.random(in: 1500...2000)
         } else {
             return -CGFloat.random(in: 1500...2000)
-        }
-    }
-    
-    var gameBody: some View {
-        GeometryReader { geometry in
-            AspectVGrid(items: emojiGame.cards, aspectRatio: Constants.aspectRatio) { card in
-                    if !isUndealt(card) {
-                        CardView(card: card)
-                            .zIndex(zIndex(for: card))
-                            .matchedGeometryEffect(id: card.id, in: dealingCards)
-                            .transition(AnyTransition.asymmetric(insertion: .identity, removal: .scale))
-                            .padding(geometry.size.width * 0.01)
-                            .onTapGesture {
-                                withAnimation {
-                                    emojiGame.choose(card)
-                                }
-                            }
-                    }
-            }
-            .padding(geometry.size.width * 0.01)
-            .foregroundColor(ColorHelper.color(for: emojiGame.theme.color))
         }
     }
     
