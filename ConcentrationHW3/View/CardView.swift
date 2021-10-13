@@ -16,70 +16,79 @@ struct CardView: View {
     var body: some View {
         GeometryReader {  geometry in
             if !card.isMatched || card.isFaceUp {
-                if gameType == .emojiMojo {
-                    ZStack {
-                        if card.isConsumingBonusTime {
-                            Pie(startAngle: angle(for: 0),
-                                endAngle: angle(for: -animatedBonusRemaining))
-                                .padding(geometry.size.width * 0.04)
-                                .opacity(0.4)
-                                .onAppear {
-                                    animatedBonusRemaining = card.bonusRemaining
-                                    withAnimation(.linear(duration: card.bonusTimeRemaining)) {
-                                        animatedBonusRemaining = 0
-                                    }
-                                }
-                        } else {
-                            Pie(startAngle: angle(for: 0),
-                                endAngle: angle(for: -card.bonusRemaining))
-                                .padding(geometry.size.width * 0.04)
-                                .opacity(0.4)
-                        }
-                        Text(card.content)
-                            .font(systemFont(for: geometry.size))
-                            .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
-                            .animation(
-                                card.isMatched
-                                ? .linear(duration: 1.0).repeatForever(autoreverses: false)
-                                : .default,
-                                value: card.isMatched
-                            )
+                Group {
+                    switch gameType {
+                        case .emojiMojo:
+                            emojiBody(size: geometry.size)
+                        case .templeMatch:
+                            templeBody(size: geometry.size)
+                        case .shapeScape:
+                            emojiBody(size: geometry.size) // TODO: replace or remove
                     }
-                    .cardify(isFaceUp: card.isFaceUp)
-                    .transition(.scale)
-                } else if (gameType == .templeMatch) {
-                    VStack {
-                        Image(card.content)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .offset(x: 0, y: card.isMatched ? 5 : 0)
-                            .animation(
-                                card.isMatched
-                                    ? Animation
-                                        .easeInOut(duration: 0.25)
-                                        .repeatForever(autoreverses: true) : .default,
-                                value: card.isMatched
-                            )
-                        if card.bonusRemaining > 0 {
-                            if card.isConsumingBonusTime {
-                                CapsuleCountdown(value: animatedBonusRemaining, width: geometry.size.width - 40)
-//                                    .offset(x: 0, y: geometry.size.height / 2 - 20)
-                                    .padding()
-                                    .onAppear {
-                                        animatedBonusRemaining = card.bonusRemaining
-                                        withAnimation(.linear(duration: card.bonusTimeRemaining)) {
-                                            animatedBonusRemaining = 0
-                                        }
-                                    }
-                            } else {
-                                CapsuleCountdown(value: card.bonusRemaining, width: geometry.size.width - 40)
-//                                    .offset(x: 0, y: geometry.size.height / 2 - 20)
-                                    .padding()
+                }
+                .cardify(isFaceUp: card.isFaceUp)
+                .transition(.scale)
+            }
+        }
+    }
+    
+    private func emojiBody(size: CGSize) -> some View {
+        ZStack {
+            if card.isConsumingBonusTime {
+                Pie(startAngle: angle(for: 0),
+                    endAngle: angle(for: -animatedBonusRemaining))
+                    .padding(size.width * 0.04)
+                    .opacity(0.4)
+                    .onAppear {
+                        animatedBonusRemaining = card.bonusRemaining
+                        withAnimation(.linear(duration: card.bonusTimeRemaining)) {
+                            animatedBonusRemaining = 0
+                        }
+                    }
+            } else {
+                Pie(startAngle: angle(for: 0),
+                    endAngle: angle(for: -card.bonusRemaining))
+                    .padding(size.width * 0.04)
+                    .opacity(0.4)
+            }
+            Text(card.content)
+                .font(systemFont(for: size))
+                .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                .animation(
+                    card.isMatched
+                    ? .linear(duration: 1.0).repeatForever(autoreverses: false)
+                    : .default,
+                    value: card.isMatched
+                )
+        }
+    }
+    
+    private func templeBody(size: CGSize) -> some View {
+        VStack {
+            Image(card.content)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .offset(x: 0, y: card.isMatched ? 5 : 0)
+                .animation(
+                    card.isMatched
+                        ? Animation
+                            .easeInOut(duration: 0.25)
+                            .repeatForever(autoreverses: true) : .default,
+                    value: card.isMatched
+                )
+            if card.bonusRemaining > 0 {
+                if card.isConsumingBonusTime {
+                    CapsuleCountdown(value: animatedBonusRemaining, width: size.width - 40)
+                        .padding()
+                        .onAppear {
+                            animatedBonusRemaining = card.bonusRemaining
+                            withAnimation(.linear(duration: card.bonusTimeRemaining)) {
+                                animatedBonusRemaining = 0
                             }
                         }
-                    }
-                    .cardify(isFaceUp: card.isFaceUp)
-                    .transition(.scale)
+                } else {
+                    CapsuleCountdown(value: card.bonusRemaining, width: size.width - 40)
+                        .padding()
                 }
             }
         }
