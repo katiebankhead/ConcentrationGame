@@ -21,7 +21,7 @@ struct EmojiGameView: View {
             deckBody
         }
         .edgesIgnoringSafeArea(.bottom)
-        .navigationTitle("Concentration")
+        .navigationTitle("\(emojiGame.theme.name)")
         .navigationBarItems(leading: Button("New Game") {
             withAnimation {
                 emojiGame.reset()
@@ -134,6 +134,6 @@ struct EmojiGameView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiGameView(emojiGame: EmojiConcentrationGame())
+        EmojiGameView(emojiGame: EmojiConcentrationGame(themes[0]))
     }
 }

@@ -31,9 +31,9 @@ let themes = [
     ),
     Theme(name: "Faces",
                gameType: .emojiMojo,
-               emojis: ["🥳", "😂", "🤪", "🤩", "😍", "🙃"],
+               emojis: ["🥳", "😂", "🤪", "🤩", "😍", "🙃" , "🙄"],
                color: "yellow",
-               numberOfPairsOfCards: 6
+               numberOfPairsOfCards: 7
     ),
     Theme(name: "Clothing",
                gameType: .emojiMojo,
@@ -43,9 +43,9 @@ let themes = [
     ),
     Theme(name: "Animals",
                gameType: .emojiMojo,
-               emojis: ["🐙", "🐝", "🐼", "🐴", "🐳"],
+               emojis: ["🐙", "🐝", "🐼", "🐴", "🐳", "🐢", "🦔"],
                color: "brown",
-               numberOfPairsOfCards: 5
+               numberOfPairsOfCards: 7
     ),
     Theme(name: "Nature",
                gameType: .emojiMojo,

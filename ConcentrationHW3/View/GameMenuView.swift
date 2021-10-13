@@ -13,23 +13,20 @@ struct GameMenuView: View {
         NavigationView {
             Form {
                 Section(header: Text("Games")) {
-                    NavigationLink(themes[0].name, destination: {
-                        EmojiGameView(emojiGame: EmojiConcentrationGame())
-                    })
-                    NavigationLink("Shape Scape", destination: {
-                        Circle().fill(.green)
-                            .padding()
-                    })
-                    NavigationLink("Temple Run", destination: {
-                        Circle().fill(.blue)
-                            .padding()
-                    })
+                    ForEach(themes.indices) { index in
+                        NavigationLink(themes[index].name, destination: {
+                            EmojiGameView(emojiGame: EmojiConcentrationGame(themes[index]))
+                        })
+                    }
                 }
                 Section() {
                     NavigationLink("Settings", destination: SettingsView())
                 }
+                Section() {
+                    NavigationLink("High Scores", destination: SettingsView())
+                }
             }
-            .navigationTitle("Project 1")
+            .navigationTitle("Concentration Game")
         }
     }
 }
