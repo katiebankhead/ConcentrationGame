@@ -50,9 +50,6 @@ struct CardView: View {
                 } else if (gameType == .templeMatch) {
                     ZStack {
                         if card.isConsumingBonusTime {
-    //                        Rectangle().fill(.red).opacity(0.3)
-    //                            .frame(width: geometry.size.width, height: geometry.size.height * animatedBonusRemaining / 360, alignment: <#T##Alignment#>)
-    //                            .scaleEffect(CGSize(width: geometry.size.width, height: geometry.size.height * animatedBonusRemaining / 360))
                             Pie(startAngle: angle(for: 0),
                                 endAngle: angle(for: -animatedBonusRemaining))
                                 .padding(geometry.size.width * 0.04)
@@ -72,11 +69,12 @@ struct CardView: View {
                         Image(card.content)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                            .offset(x: 0, y: card.isMatched ? 5 : 0)
                             .animation(
                                 card.isMatched
-                                ? .linear(duration: 1.0).repeatForever(autoreverses: false)
-                                : .default,
+                                    ? Animation
+                                        .easeInOut(duration: 0.25)
+                                        .repeatForever(autoreverses: true) : .default,
                                 value: card.isMatched
                             )
                     }
