@@ -53,7 +53,7 @@ struct EmojiGameView: View {
                 }
             }
         }
-        .foregroundColor(Constants.color)
+        .foregroundColor(ColorHelper.color(for: emojiGame.theme.color))
         .frame(width: Constants.deckWidth, height: Constants.deckHeight)
         .offset(x: randomOffset(), y: randomOffset())
         .padding(.bottom)

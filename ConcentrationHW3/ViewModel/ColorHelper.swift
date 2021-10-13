@@ -10,6 +10,8 @@ import SwiftUI
 struct ColorHelper {
     static func color(for colorString: String) -> Color {
         switch colorString {
+            case "red":
+                return .red
             case "orange":
                 return .orange
             case "yellow":
