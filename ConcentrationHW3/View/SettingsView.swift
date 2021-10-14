@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct Settings {
+    static let highScoreKey = "highScore"
     static let playSoundKey = "soundEnabled"
+    static let cardPairsKey = "pairCount"
 }
 
 struct SettingsView: View {
     @AppStorage(Settings.playSoundKey) private var playSound = false
+    @AppStorage(Settings.cardPairsKey) private var cardPairs: Int = 2
 
     var body: some View {
         Form {
@@ -20,7 +23,7 @@ struct SettingsView: View {
                 Toggle("Play Sound", isOn: $playSound).padding(.horizontal)
             }
         }
-        .navigationTitle("Settings")
+        .navigationTitle("Settings ⚙️")
     }
 }
 

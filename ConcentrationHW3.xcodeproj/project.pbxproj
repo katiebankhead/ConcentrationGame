@@ -25,6 +25,9 @@
 		A25E1EC926EA5B9700452E1E /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E1EC826EA5B9700452E1E /* Array+Identifiable.swift */; };
 		A28367BC26FA21170078EF34 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28367BB26FA21170078EF34 /* Cardify.swift */; };
 		A2B0C5A1271788FE00465A98 /* HighScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B0C5A0271788FE00465A98 /* HighScoreView.swift */; };
+		A2B0C5A32717D6CC00465A98 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B0C5A22717D6CC00465A98 /* SoundPlayer.swift */; };
+		A2B0C5A92717DC4000465A98 /* Cheer.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A2B0C5A72717DB0A00465A98 /* Cheer.m4a */; };
+		A2B0C5AA2717DC4000465A98 /* Tada.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A2B0C5A82717DB0A00465A98 /* Tada.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		A25E1EC826EA5B9700452E1E /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		A28367BB26FA21170078EF34 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		A2B0C5A0271788FE00465A98 /* HighScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreView.swift; sourceTree = "<group>"; };
+		A2B0C5A22717D6CC00465A98 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		A2B0C5A72717DB0A00465A98 /* Cheer.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cheer.m4a; sourceTree = "<group>"; };
+		A2B0C5A82717DB0A00465A98 /* Tada.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tada.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +85,13 @@
 		A25E1EAF26E91A6100452E1E /* ConcentrationHW3 */ = {
 			isa = PBXGroup;
 			children = (
+				A2B0C5A42717DA4200465A98 /* Audio */,
 				A25E1EB426E91A6800452E1E /* Assets.xcassets */,
 				A25E1EC426EA520C00452E1E /* Model */,
-				A25E1EB626E91A6800452E1E /* Preview Content */,
-				A25E1EC726EA5B8400452E1E /* Utility */,
 				A25E1EC526EA521300452E1E /* View */,
 				A25E1EC626EA521900452E1E /* ViewModel */,
+				A25E1EC726EA5B8400452E1E /* Utility */,
+				A25E1EB626E91A6800452E1E /* Preview Content */,
 			);
 			path = ConcentrationHW3;
 			sourceTree = "<group>";
@@ -137,8 +144,18 @@
 			children = (
 				A25E1EC826EA5B9700452E1E /* Array+Identifiable.swift */,
 				A2435A8E2707834500F52B0A /* Array+Only.swift */,
+				A2B0C5A22717D6CC00465A98 /* SoundPlayer.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		A2B0C5A42717DA4200465A98 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				A2B0C5A72717DB0A00465A98 /* Cheer.m4a */,
+				A2B0C5A82717DB0A00465A98 /* Tada.m4a */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +216,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2B0C5A92717DC4000465A98 /* Cheer.m4a in Resources */,
+				A2B0C5AA2717DC4000465A98 /* Tada.m4a in Resources */,
 				A25E1EB826E91A6800452E1E /* Preview Assets.xcassets in Resources */,
 				A25E1EB526E91A6800452E1E /* Assets.xcassets in Resources */,
 			);
@@ -226,6 +245,7 @@
 				A21F4EF12716A5C10040706D /* CapsuleCountdown.swift in Sources */,
 				A25E1EC326EA513A00452E1E /* CardView.swift in Sources */,
 				A21F4EE7270EBB0B0040706D /* GameMenuView.swift in Sources */,
+				A2B0C5A32717D6CC00465A98 /* SoundPlayer.swift in Sources */,
 				A21F4EED271534080040706D /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

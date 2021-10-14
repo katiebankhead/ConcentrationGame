@@ -12,11 +12,15 @@ import SwiftUI
 class EmojiConcentrationGame: ObservableObject {
     @Published private var game: ConcentrationGame<String>
     var theme: Theme
+    var player = SoundPlayer()
     
     init(_ theme: Theme) {
         game = EmojiConcentrationGame.createGame(theme: theme)
         self.theme = theme
     }
+    
+    @AppStorage(Settings.playSoundKey) var playSound: Bool = false
+    @AppStorage(Settings.cardPairsKey) var cardPairs: Int = 2
         
     var hasDealt = false
         
@@ -24,10 +28,12 @@ class EmojiConcentrationGame: ObservableObject {
         ConcentrationGame<String>(theme: theme, numberOfPairsOfCards: Int.random(in: 2...theme.numberOfPairsOfCards)) { index in
             theme.content[index]
         }
+//        ConcentrationGame<String>(
+//            theme: theme,
+//            numberOfPairsOfCards: cardPairs) { index in
+//            theme.content[index]
+//        }
     }
-    
-    @AppStorage(Settings.playSoundKey) private var playSound: Bool = false
-//    @AppStorage(Settings.highScoresKey) private var highScores: String = ""
     
     // MARK: - Access to model
     
@@ -46,7 +52,15 @@ class EmojiConcentrationGame: ObservableObject {
     // MARK: - Intents
     
     func choose(_ card: ConcentrationGame<String>.Card) {
+        let score1 = game.score
         game.choose(card)
+        let score2 = game.score
+        
+        if playSound {
+            if score2 > score1 {
+                player.playSound(named: "Tada.m4a")
+            }
+        }
     }
     
     func reset() {
