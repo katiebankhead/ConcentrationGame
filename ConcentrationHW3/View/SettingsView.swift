@@ -14,16 +14,36 @@ struct Settings {
 }
 
 struct SettingsView: View {
-    @AppStorage(Settings.playSoundKey) private var playSound = false
-    @AppStorage(Settings.cardPairsKey) private var cardPairs: Int = 2
+    @AppStorage(Settings.playSoundKey) private var playSound: Bool = false
+    @State private var cardPairs = UserDefaults.standard.integer(forKey: Settings.cardPairsKey)
 
     var body: some View {
         Form {
             Section {
                 Toggle("Play Sound", isOn: $playSound).padding(.horizontal)
             }
+            Section {
+                VStack(alignment: .leading) {
+                    Text("Number of card pairs")
+                    Picker("Number of card pairs", selection: $cardPairs) {
+                        Text("2").tag(2)
+                        Text("3").tag(3)
+                        Text("4").tag(4)
+                        Text("5").tag(5)
+                        Text("6").tag(6)
+                        Text("7").tag(7)
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                }
+            }
         }
         .navigationTitle("Settings ⚙️")
+        .onAppear {
+            cardPairs = UserDefaults.standard.integer(forKey: Settings.cardPairsKey)
+        }
+        .onDisappear {
+            UserDefaults.standard.set(cardPairs, forKey: Settings.cardPairsKey)
+        }
     }
 }
 

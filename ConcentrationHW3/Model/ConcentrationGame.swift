@@ -13,12 +13,16 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
     var theme: Theme
     
+    var cardPairs: Int {
+        UserDefaults.standard.integer(forKey: Settings.cardPairsKey)
+    }
+    
     init(theme: Theme, numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         self.theme = theme
         
         cards = Array<Card>()
         
-        for pairIndex in 0..<numberOfPairsOfCards {
+        for pairIndex in 0..<cardPairs {
             let content = cardContentFactory(pairIndex)
             
             cards.append(Card(content: content))
