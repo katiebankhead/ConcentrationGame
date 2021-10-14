@@ -11,16 +11,11 @@ import Foundation
 
 struct ConcentrationGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
+    var theme: Theme
     
-    var score: Int {
-        cards.reduce(0) { total, card in
-            total + card.score
-        }
-    }
-    
-    var indexOfTheOnlyFaceUpCard: Int?
-    
-    init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
+    init(theme: Theme, numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
+        self.theme = theme
+        
         cards = Array<Card>()
         
         for pairIndex in 0..<numberOfPairsOfCards {
@@ -31,6 +26,26 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
         }
         
         cards.shuffle()
+    }
+    
+    var indexOfTheOnlyFaceUpCard: Int?
+    
+    var overallHighScore: Int {
+        UserDefaults.standard.integer(forKey: Settings.highScoreKey)
+    }
+    
+    var score: Int {
+        cards.reduce(0) { total, card in
+            total + card.score
+        }
+    }
+    
+    private func highScore(for theme: Theme) -> Int {
+        UserDefaults.standard.integer(forKey: theme.name)
+    }
+    
+    private func updateThemeHighScore(_ score: Int, for theme: Theme) {
+        UserDefaults.standard.set(score, forKey: theme.name)
     }
     
     mutating func choose(_ card: Card) {
@@ -58,6 +73,15 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
             
             cards[chosenIndex].viewCount += 1
             cards[chosenIndex].isFaceUp.toggle()
+            
+            // write new score to high scores
+            if score > highScore(for: theme) {
+                updateThemeHighScore(score, for: theme)
+            }
+            
+            if score > overallHighScore {
+                UserDefaults.standard.set(score, forKey: Settings.highScoreKey)
+            }
         }
     }
     

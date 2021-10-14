@@ -27,7 +27,7 @@ struct EmojiGameView: View {
                 emojiGame.reset()
                 dealNewGame()
             }
-        }, trailing: Text("Score: \(emojiGame.score)"))
+        }, trailing: Text("Score: \(emojiGame.score) [\(emojiGame.overallHighScore)]"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             if emojiGame.hasDealt {

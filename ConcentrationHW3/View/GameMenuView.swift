@@ -20,7 +20,7 @@ struct GameMenuView: View {
                     }
                 }
                 Section() {
-                    NavigationLink("High Scores 🏆", destination: SettingsView())
+                    NavigationLink("High Scores 🏆", destination: HighScoreView())
                 }
                 Section() {
                     NavigationLink("Settings ⚙️", destination: SettingsView())

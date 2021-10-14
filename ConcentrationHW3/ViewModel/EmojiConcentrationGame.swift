@@ -21,18 +21,22 @@ class EmojiConcentrationGame: ObservableObject {
     var hasDealt = false
         
     private static func createGame(theme: Theme) -> ConcentrationGame<String> {
-        ConcentrationGame<String>(numberOfPairsOfCards: Int.random(in: 2...theme.numberOfPairsOfCards)) { index in
+        ConcentrationGame<String>(theme: theme, numberOfPairsOfCards: Int.random(in: 2...theme.numberOfPairsOfCards)) { index in
             theme.content[index]
         }
     }
     
     @AppStorage(Settings.playSoundKey) private var playSound: Bool = false
-    @AppStorage(Settings.highScoresKey) private var highScores: String = ""
+//    @AppStorage(Settings.highScoresKey) private var highScores: String = ""
     
     // MARK: - Access to model
     
     var cards: Array<ConcentrationGame<String>.Card> {
         game.cards
+    }
+    
+    var overallHighScore: Int {
+        game.overallHighScore
     }
     
     var score: Int {
