@@ -82,6 +82,15 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
             if score > overallHighScore {
                 UserDefaults.standard.set(score, forKey: Settings.highScoreKey)
             }
+            
+            // make final pair of cards disappear
+            if gameOver() {
+                for card in cards {
+                    if card.isFaceUp {
+                        turnFaceDown(card)
+                    }
+                }
+            }
         }
     }
     
@@ -89,6 +98,15 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
         if let chosenIndex = cards.firstIndex(matching: card), cards[chosenIndex].isMatched {
             cards[chosenIndex].isFaceUp = false
         }
+    }
+    
+    func gameOver() -> Bool {
+        for card in cards {
+            if !card.isMatched {
+                return false
+            }
+        }
+        return true
     }
     
     struct Card: Identifiable {
