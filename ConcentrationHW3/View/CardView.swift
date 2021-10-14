@@ -23,11 +23,12 @@ struct CardView: View {
                         case .templeMatch:
                             templeBody(size: geometry.size)
                         case .shapeScape:
-                            emojiBody(size: geometry.size) // TODO: replace or remove
+                            shapeBody(size: geometry.size)
                     }
                 }
                 .cardify(isFaceUp: card.isFaceUp)
                 .transition(.scale)
+                .clipped()
             }
         }
     }
@@ -94,6 +95,54 @@ struct CardView: View {
         }
     }
     
+    private func shapeBody(size: CGSize) -> some View {
+        ZStack {
+            if card.isConsumingBonusTime {
+                Pie(startAngle: angle(for: 0),
+                    endAngle: angle(for: -animatedBonusRemaining))
+                    .padding(size.width * 0.04)
+                    .opacity(0.4)
+                    .onAppear {
+                        animatedBonusRemaining = card.bonusRemaining
+                        withAnimation(.linear(duration: card.bonusTimeRemaining)) {
+                            animatedBonusRemaining = 0
+                        }
+                    }
+            } else {
+                Pie(startAngle: angle(for: 0),
+                    endAngle: angle(for: -card.bonusRemaining))
+                    .padding(size.width * 0.04)
+                    .opacity(0.4)
+            }
+            shapeView(for: card.content)
+                .padding(0.2 * max(size.height, size.width))
+                .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                .animation(
+                    card.isMatched
+                    ? .linear(duration: 1.0).repeatForever(autoreverses: false)
+                    : .default,
+                    value: card.isMatched
+                )
+        }
+    }
+    
+    @ViewBuilder
+    private func shapeView(for shape: String) -> some View{
+        if card.content == "triangle" {
+            Triangle()
+                .fill(.red)
+        } else if card.content == "circle" {
+            Circle()
+                .fill(.yellow)
+        } else if card.content == "rectangle" {
+            Rectangle()
+                .fill(.blue)
+        } else if card.content == "capsule" {
+            Capsule()
+                .fill(.green)
+        }
+    }
+    
     private func angle(for degrees: Double) -> Angle {
         Angle.degrees(degrees * 360 - 90)
     }
@@ -106,6 +155,7 @@ struct CardView: View {
     private struct Constants {
         static let cardCornerRadius: CGFloat = 10
         static let fontScaleFactor = 0.75
+        static let percentage = 100
     }
 }
 

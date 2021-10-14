@@ -28,6 +28,8 @@ struct ColorHelper {
                 return .mint
             case "pink":
                 return .pink
+            case "cyan":
+                return .cyan
             default:
                 return .black
         }

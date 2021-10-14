@@ -100,4 +100,13 @@ let themes = [
                color: "mint",
                numberOfPairsOfCards: 7
     ),
+    Theme(name: "Shapes",
+          gameType: .shapeScape,
+          content: ["triangle",
+                    "circle",
+                    "rectangle",
+                    "capsule"],
+          color: "cyan",
+          numberOfPairsOfCards: 3
+         )
 ]

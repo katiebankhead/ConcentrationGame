@@ -26,8 +26,8 @@
 		A28367BC26FA21170078EF34 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28367BB26FA21170078EF34 /* Cardify.swift */; };
 		A2B0C5A1271788FE00465A98 /* HighScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B0C5A0271788FE00465A98 /* HighScoreView.swift */; };
 		A2B0C5A32717D6CC00465A98 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B0C5A22717D6CC00465A98 /* SoundPlayer.swift */; };
-		A2B0C5A92717DC4000465A98 /* Cheer.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A2B0C5A72717DB0A00465A98 /* Cheer.m4a */; };
 		A2B0C5AA2717DC4000465A98 /* Tada.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A2B0C5A82717DB0A00465A98 /* Tada.m4a */; };
+		A2B0C5AC2717ED3000465A98 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B0C5AB2717ED3000465A98 /* Triangle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,8 +51,8 @@
 		A28367BB26FA21170078EF34 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		A2B0C5A0271788FE00465A98 /* HighScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreView.swift; sourceTree = "<group>"; };
 		A2B0C5A22717D6CC00465A98 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
-		A2B0C5A72717DB0A00465A98 /* Cheer.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cheer.m4a; sourceTree = "<group>"; };
 		A2B0C5A82717DB0A00465A98 /* Tada.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tada.m4a; sourceTree = "<group>"; };
+		A2B0C5AB2717ED3000465A98 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +126,7 @@
 				A21F4EEC271534080040706D /* SettingsView.swift */,
 				A21F4EF02716A5C10040706D /* CapsuleCountdown.swift */,
 				A2B0C5A0271788FE00465A98 /* HighScoreView.swift */,
+				A2B0C5AB2717ED3000465A98 /* Triangle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,7 +153,6 @@
 		A2B0C5A42717DA4200465A98 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				A2B0C5A72717DB0A00465A98 /* Cheer.m4a */,
 				A2B0C5A82717DB0A00465A98 /* Tada.m4a */,
 			);
 			path = Audio;
@@ -216,7 +216,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2B0C5A92717DC4000465A98 /* Cheer.m4a in Resources */,
 				A2B0C5AA2717DC4000465A98 /* Tada.m4a in Resources */,
 				A25E1EB826E91A6800452E1E /* Preview Assets.xcassets in Resources */,
 				A25E1EB526E91A6800452E1E /* Assets.xcassets in Resources */,
@@ -233,6 +232,7 @@
 				A25E1EC126E982EE00452E1E /* EmojiConcentrationGame.swift in Sources */,
 				A25E1EBF26E981C000452E1E /* ConcentrationGame.swift in Sources */,
 				A28367BC26FA21170078EF34 /* Cardify.swift in Sources */,
+				A2B0C5AC2717ED3000465A98 /* Triangle.swift in Sources */,
 				A2435A8F2707834500F52B0A /* Array+Only.swift in Sources */,
 				A21F4EE9270EC5E90040706D /* Theme.swift in Sources */,
 				A2B0C5A1271788FE00465A98 /* HighScoreView.swift in Sources */,
