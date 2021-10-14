@@ -66,7 +66,6 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
                     cards[potentialMatchIndex].isMatched = true
                 }
                 indexOfTheOnlyFaceUpCard = nil
-//                cards[chosenIndex].isFaceUp = true
             } else {
                 for index in cards.indices {
                     cards[index].isFaceUp = false

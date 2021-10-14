@@ -12,27 +12,19 @@ import SwiftUI
 class EmojiConcentrationGame: ObservableObject {
     @Published private var game: ConcentrationGame<String>
     var theme: Theme
+    var hasDealt = false
     var player = SoundPlayer()
+    @AppStorage(Settings.playSoundKey) var playSound: Bool = false
     
     init(_ theme: Theme) {
         game = EmojiConcentrationGame.createGame(theme: theme)
         self.theme = theme
     }
-    
-    @AppStorage(Settings.playSoundKey) var playSound: Bool = false
-    @AppStorage(Settings.cardPairsKey) var cardPairs: Int = 2
-        
-    var hasDealt = false
         
     private static func createGame(theme: Theme) -> ConcentrationGame<String> {
         ConcentrationGame<String>(theme: theme, numberOfPairsOfCards: Int.random(in: 2...theme.numberOfPairsOfCards)) { index in
             theme.content[index]
         }
-//        ConcentrationGame<String>(
-//            theme: theme,
-//            numberOfPairsOfCards: cardPairs) { index in
-//            theme.content[index]
-//        }
     }
     
     // MARK: - Access to model

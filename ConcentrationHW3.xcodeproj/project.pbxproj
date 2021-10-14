@@ -39,6 +39,7 @@
 		A21F4EF02716A5C10040706D /* CapsuleCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleCountdown.swift; sourceTree = "<group>"; };
 		A2267CCA26F394E1001F02ED /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 		A2435A8E2707834500F52B0A /* Array+Only.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Only.swift"; sourceTree = "<group>"; };
+		A243ACE32717F9D300DB91AA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A25E1EAD26E91A6100452E1E /* ConcentrationHW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcentrationHW3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E1EB026E91A6100452E1E /* ConcentrationHW3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationHW3App.swift; sourceTree = "<group>"; };
 		A25E1EB226E91A6100452E1E /* EmojiGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiGameView.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 				A25E1EC626EA521900452E1E /* ViewModel */,
 				A25E1EC726EA5B8400452E1E /* Utility */,
 				A25E1EB626E91A6800452E1E /* Preview Content */,
+				A243ACE32717F9D300DB91AA /* README.md */,
 			);
 			path = ConcentrationHW3;
 			sourceTree = "<group>";
